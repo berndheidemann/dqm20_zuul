@@ -1,3 +1,6 @@
+# Zuul 1
+
+
 **Die Welt von Zuul**
 
 **Aufgabe 1**
@@ -6,15 +9,15 @@ Lade dir das Archiv DieWeltVonZuul.zip von ItsLearning herunter.
 
 *Eclipse*: Importiere das Archiv als Projekt
 
-File à Import à existing Project into Workspace à Archiv auswählen
+File Ã  Import Ã  existing Project into Workspace Ã  Archiv auswÃ¤hlen
 
-*Eclipse*: Beachte, dass eventuell die Java-Version angepasst werden muss (Project à Properties à Java Build Path à Libraries à Button „Edit“)
+*Eclipse*: Beachte, dass eventuell die Java-Version angepasst werden muss (Project Ã  Properties Ã  Java Build Path Ã  Libraries Ã  Button â€Editâ€œ)
 
-*IntelliJ*: Entpacke das Archiv z.B. auf H:\projekte\zuul, starte IntelliJ und öffne es (File à open).
+*IntelliJ*: Entpacke das Archiv z.B. auf H:\projekte\zuul, starte IntelliJ und Ã¶ffne es (File Ã  open).
 
-IntelliJ: Beachte, dass eventuell die Java-Version angepasst werden muss (File à Project Structure à richtiges JDK auswählen)
+IntelliJ: Beachte, dass eventuell die Java-Version angepasst werden muss (File Ã  Project Structure Ã  richtiges JDK auswÃ¤hlen)
 
-Starte das Spiel und schaue, welche Interaktionen möglich sind.
+Starte das Spiel und schaue, welche Interaktionen mÃ¶glich sind.
 
 **Aufgabe 2**
 
@@ -22,46 +25,46 @@ Betrachte den Source-Code der Anwendung. Was passiert in der Methode spielen() d
 
 **Aufgabe 3**
 
-Lies die folgenden Kästen durch. Die beiden hier eingeführten Begriffe der Objektorientierten Programmierung werden im weiteren Verlauf häufig benutzt werden:
+Lies die folgenden KÃ¤sten durch. Die beiden hier eingefÃ¼hrten Begriffe der Objektorientierten Programmierung werden im weiteren Verlauf hÃ¤ufig benutzt werden:
 
 **Kopplung**
 
-Der Begriff Kopplung beschreibt den Grad der Abhängigkeit zwischen Klassen. Es wird eine möglichst lose Kopplung angestrebt, also ein System, in dem jede Klasse weitgehend unabhängig ist und mit anderen Klassen nur über möglichst schmale, wohl definierte Schnittstellen kommuniziert.
+Der Begriff Kopplung beschreibt den Grad der AbhÃ¤ngigkeit zwischen Klassen. Es wird eine mÃ¶glichst lose Kopplung angestrebt, also ein System, in dem jede Klasse weitgehend unabhÃ¤ngig ist und mit anderen Klassen nur Ã¼ber mÃ¶glichst schmale, wohl definierte Schnittstellen kommuniziert.
 
 
 
-**Kohäsion**
+**KohÃ¤sion**
 
-Der Begriff Kohäsion beschreibt, wie gut eine Programmeinheit eine logische Aufgabe oder Einheit abbildet. In einem System mit hoher Kohäsion ist jede Programmeinheit (eine Methode, Klasse oder ein Modul) verantwortlich für genau eine wohl definierte Aufgabe oder Einheit. Ein guter Klassenentwurf weist einen hohen Grad an Kohäsion auf.
+Der Begriff KohÃ¤sion beschreibt, wie gut eine Programmeinheit eine logische Aufgabe oder Einheit abbildet. In einem System mit hoher KohÃ¤sion ist jede Programmeinheit (eine Methode, Klasse oder ein Modul) verantwortlich fÃ¼r genau eine wohl definierte Aufgabe oder Einheit. Ein guter Klassenentwurf weist einen hohen Grad an KohÃ¤sion auf.
 
-- Eine Programmeinheit sollte für eine in sich geschlossene Aufgabe zuständig sein.
+- Eine Programmeinheit sollte fÃ¼r eine in sich geschlossene Aufgabe zustÃ¤ndig sein.
 - Eine Methode sollte **eine** logische Operation implementieren.
 - Eine Klasse sollte genau **einen** Typ von Objekt modellieren.
-- Hauptanlass für Kohäsion ist die Wiederverwendung: Sie erhöht die Wahrscheinlichkeit, dass eine Klasse oder Methode in einem anderen Zusammenhang eingesetzt werden kann. Außerdem gibt es den Vorteil, dass im Falle von Änderungen die Stellen, die von diesen Änderungen betroffen sind, eher in einer Einheit zu finden sind.
+- Hauptanlass fÃ¼r KohÃ¤sion ist die Wiederverwendung: Sie erhÃ¶ht die Wahrscheinlichkeit, dass eine Klasse oder Methode in einem anderen Zusammenhang eingesetzt werden kann. AuÃŸerdem gibt es den Vorteil, dass im Falle von Ã„nderungen die Stellen, die von diesen Ã„nderungen betroffen sind, eher in einer Einheit zu finden sind.
 
-Verstößt man gegen das **DRY-Prinzip** (Don’t repeat yourself), liegt häufig eine schlechte Kohäsion vor. Ein Beispiel wäre Code-Duplizierung:
+VerstÃ¶ÃŸt man gegen das **DRY-Prinzip** (Donâ€™t repeat yourself), liegt hÃ¤ufig eine schlechte KohÃ¤sion vor. Ein Beispiel wÃ¤re Code-Duplizierung:
 
 - Erscheint ein Quelltextabschnitt mehr als einmal in einer Anwendung, spricht man von Code-Duplizierung
 - Codeduplizierung birgt die Gefahr von Fehlern und Inkonsistenzen.
-- Codeduplizierung ist ein Zeichen für schlechte Kohäsion.
+- Codeduplizierung ist ein Zeichen fÃ¼r schlechte KohÃ¤sion.
 
 **Aufgabe 4**
 
 Schaue dir die Methoden wechselRaum() und willkommensTextAusgeben() an. Dort gibt es z.B. die oben beschriebene (fiese) Code-Duplizierung!
 
-Schreibe eine Methode raumInfoAusgeben(), die du in den Methoden wechsleRaum() und willkommenstextAusgeben() aufgerufen wird und darüber die Codeduplizierung und die schlechte Kohäsion auflöst.
+Schreibe eine Methode raumInfoAusgeben(), die du in den Methoden wechsleRaum() und willkommenstextAusgeben() aufgerufen wird und darÃ¼ber die Codeduplizierung und die schlechte KohÃ¤sion auflÃ¶st.
 
 **Aufgabe 5**
 
-Erweiterung des Spiels: Es sollen die Bewegungsrichtungen up und down hinzugefügt werden. Dementsprechend brauchen wir ein paar neue Räume. Die Taverne hat nun einen ersten Stock, in dem die Gästezimmer untergebracht sind. Außerdem hat die Taverne einen Keller, von dem ein Geheimgang zu einer alten Piratenhöhle unter der Lichtung führt. Der auf der nachfolgenden Seite abgebildete Graph verdeutlicht, welche Wege möglich sein sollen.
+Erweiterung des Spiels: Es sollen die Bewegungsrichtungen up und down hinzugefÃ¼gt werden. Dementsprechend brauchen wir ein paar neue RÃ¤ume. Die Taverne hat nun einen ersten Stock, in dem die GÃ¤stezimmer untergebracht sind. AuÃŸerdem hat die Taverne einen Keller, von dem ein Geheimgang zu einer alten PiratenhÃ¶hle unter der Lichtung fÃ¼hrt. Der auf der nachfolgenden Seite abgebildete Graph verdeutlicht, welche Wege mÃ¶glich sein sollen.
 
-![](Aspose.Words.4e0f3e9a-5657-44df-ae87-fbaaeea33819.001.jpeg "Räume")
+![](Aspose.Words.4e0f3e9a-5657-44df-ae87-fbaaeea33819.001.jpeg "RÃ¤ume")
 
-Dazu sind Änderungen an folgenden Stellen nötig:
+Dazu sind Ã„nderungen an folgenden Stellen nÃ¶tig:
 
 - In der Klasse Raum
     - neue Instanzvariablen anlegen (treppeNachOben, treppeNachUnten)
-    - in der Methode setzeAusgänge()
+    - in der Methode setzeAusgÃ¤nge()
 - In der Klasse Spiel in der Methode
     - raeumeAnlegen()
     - rauminfoAusgeben()
