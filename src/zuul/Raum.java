@@ -19,6 +19,8 @@ public class Raum
     public Raum suedausgang;
     public Raum ostausgang;
     public Raum westausgang;
+    public Raum treppeNachOben;
+    public Raum treppeNachUnten;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -41,16 +43,26 @@ public class Raum
      * @param westen Der Westeingang.
      */
     public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen) 
+                               Raum sueden, Raum westen, Raum oben, Raum unten)
     {
-        if(norden != null)
+        if(norden != null) {
             nordausgang = norden;
-        if(osten != null)
+        }
+        if(osten != null) {
             ostausgang = osten;
-        if(sueden != null)
+        }
+        if(sueden != null) {
             suedausgang = sueden;
-        if(westen != null)
+        }
+        if(westen != null) {
             westausgang = westen;
+        }
+        if(oben!=null) {
+            treppeNachOben = oben;
+        }
+        if(unten!=null) {
+            treppeNachUnten=unten;
+        }
     }
 
     /**

@@ -37,7 +37,7 @@ public class Spiel
      */
     private void raeumeAnlegen()
     {
-        Raum lichtung, waldstueck, taverne, hexenhaus, dorfplatz;
+        Raum lichtung, waldstueck, taverne, hexenhaus, dorfplatz, piratenhoehle, geheimgang, gaestezimmer, keller;
       
         // die Räume erzeugen
         lichtung = new Raum("auf einer Lichtung, umgeben von dunklen Tannen");
@@ -45,13 +45,22 @@ public class Spiel
         taverne = new Raum("in der Taverne, mit zwielichtigen Gestalten an der Theke");
         hexenhaus = new Raum("im Hexenhaus");
         dorfplatz = new Raum("auf dem Dorfplatz");
-        
+        piratenhoehle=new Raum("in einer dunkle, kalte Piratenhöhle");
+        geheimgang = new Raum("in einem mysterösen Geheimgang voll mit Fackeln");
+        gaestezimmer = new Raum("in einem Gästezimmer in dem Ratten wohnen");
+        keller = new Raum("in einem Keller mit flackernder Beleuchtung");
+
+
         // die Ausgänge initialisieren
-        lichtung.setzeAusgaenge(null, null, null, waldstueck);
-        waldstueck.setzeAusgaenge(null, lichtung, dorfplatz, null);
-        taverne.setzeAusgaenge(dorfplatz, null, null, null);
-        hexenhaus.setzeAusgaenge(null, dorfplatz, null, null);
-        dorfplatz.setzeAusgaenge(waldstueck, null, taverne, hexenhaus);
+        lichtung.setzeAusgaenge(null, null, null, waldstueck, null, piratenhoehle);
+        waldstueck.setzeAusgaenge(null, lichtung, dorfplatz, null, null, null);
+        taverne.setzeAusgaenge(dorfplatz, null, null, null, gaestezimmer, keller);
+        hexenhaus.setzeAusgaenge(null, dorfplatz, null, null, null, null);
+        dorfplatz.setzeAusgaenge(waldstueck, null, taverne, hexenhaus, null, null);
+        piratenhoehle.setzeAusgaenge(null,  null, null, geheimgang, lichtung, null);
+        geheimgang.setzeAusgaenge(null, piratenhoehle, keller, null, null, null);
+        keller.setzeAusgaenge(geheimgang, null, null, null, taverne, null);
+        gaestezimmer.setzeAusgaenge(null, null, null, null, null, taverne);
         aktuellerRaum = lichtung;  // das Spiel startet auf der Lichtung
     }
 
@@ -84,16 +93,30 @@ public class Spiel
         System.out.println("Entdecke die Welt von Zuul. Doch Vorsicht, überall lauern Gefahren!");
         System.out.println("Tippen sie 'help', wenn Sie Hilfe brauchen.");
         System.out.println();
+        raumInfoAusgeben();
+    }
+
+    private void raumInfoAusgeben() {
         System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
         System.out.print("Ausgänge: ");
-        if(aktuellerRaum.nordausgang != null)
+        if(aktuellerRaum.nordausgang != null) {
             System.out.print("north ");
-        if(aktuellerRaum.ostausgang != null)
+        }
+        if(aktuellerRaum.ostausgang != null) {
             System.out.print("east ");
-        if(aktuellerRaum.suedausgang != null)
+        }
+        if(aktuellerRaum.suedausgang != null) {
             System.out.print("south ");
-        if(aktuellerRaum.westausgang != null)
+        }
+        if(aktuellerRaum.westausgang != null) {
             System.out.print("west ");
+        }
+        if(aktuellerRaum.treppeNachOben!=null) {
+            System.out.print("up ");
+        }
+        if(aktuellerRaum.treppeNachUnten!=null) {
+            System.out.print("down ");
+        }
         System.out.println();
     }
 
@@ -167,23 +190,19 @@ public class Spiel
         if(richtung.equals("west")) {
             naechsterRaum = aktuellerRaum.westausgang;
         }
+        if(richtung.equals("up")) {
+            naechsterRaum=aktuellerRaum.treppeNachOben;
+        }
+        if(richtung.equals("down")) {
+            naechsterRaum=aktuellerRaum.treppeNachUnten;
+        }
 
         if (naechsterRaum == null) {
             System.out.println("Dort ist keine Tür!");
         }
         else {
             aktuellerRaum = naechsterRaum;
-            System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-            System.out.print("Ausgänge: ");
-            if(aktuellerRaum.nordausgang != null)
-                System.out.print("north ");
-            if(aktuellerRaum.ostausgang != null)
-                System.out.print("east ");
-            if(aktuellerRaum.suedausgang != null)
-                System.out.print("south ");
-            if(aktuellerRaum.westausgang != null)
-                System.out.print("west ");
-            System.out.println();
+            raumInfoAusgeben();
         }
     }
 
