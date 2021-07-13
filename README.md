@@ -23,6 +23,51 @@ Starte das Spiel und schaue, welche Interaktionen möglich sind.
 
 Betrachte den Source-Code der Anwendung. Was passiert in der Methode spielen() der Klasse Spiel? Versuche zu verstehen, wie der Programmfluss bei der Eingabe von help, go und quit aussieht. Was passiert im Code, wenn man z.B. go north eingibt?
 
+Hier ein Sequenzdiagramm zur Verdeutlichung!
+
+```plantuml
+Programm->Spiel: spielen()
+Spiel -> Spiel: willkommenstextAusgeben()
+
+loop nicht beendet
+    Spiel -> Parser: liefereBefehl()
+    Parser-->> Spiel: befehl
+    Spiel -> Spiel: verarbeiteBefehl()
+    alt befehl unbekannt?
+         Spiel->Spiel: Abbruch und Fehlerausgabe
+    else 
+        opt befehl ist "help"
+            Spiel->Spiel: hilfstextAusgeben()
+        end
+        opt befehl ist "qo"
+            Spiel->Spiel: wechselRaum(befehl)
+            Spiel -> Befehl: gibZWeitesWort()
+            Befehl -->> Spiel: zweitesWort
+            note over Spiel: aktuellerRaum speichert den gerade aktiven Raum
+            opt zweites Wort ist "north":
+                Spiel->Raum: aktuellerRaum.nordausgang
+                Raum-->>Spiel: nordausgang
+                deactivate Raum
+            end
+            opt zweites Wort ist "east":
+                Spiel->Raum: aktuellerRaum.ostausgang
+                Raum-->>Spiel: ostausgang
+            end        
+            opt zweites Wort ist "south":
+                Spiel->Raum: aktuellerRaum.suedausgang
+                Raum-->>Spiel: suedausgang
+            end        
+            opt zweites Wort ist "west":
+                Spiel->Raum: aktuellerRaum.westausgang
+                Raum-->>Spiel: westausgang
+            end        
+            note over Spiel: aktuellerRaum = entsprechender Ausgang (der ebenfalls ein Raum ist) des aktuellen Raums
+        opt befehl ist "quit"
+            Spiel-> Spiel: beenden(befehl)
+    end
+end
+```
+
 **Aufgabe 3**
 
 Lies die folgenden Kästen durch. Die beiden hier eingeführten Begriffe der Objektorientierten Programmierung werden im weiteren Verlauf häufig benutzt werden:
