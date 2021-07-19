@@ -21,7 +21,9 @@ In Java realisiert man eine solche Zuordnung mit einer Hashmap!
 
 _Deklaration:_
 
-HashMap\&lt;String, Raum\&gt; **ausgaenge;**
+```java
+HashMap<String, Raum> ausgaenge;
+`````
 
 _Initialisierung:_
 
