@@ -12,14 +12,11 @@
  */
 package zuul;
 
+import java.util.HashMap;
+
 public class Raum {
     private String beschreibung;
-    private Raum nordausgang;
-    private Raum suedausgang;
-    private Raum ostausgang;
-    private Raum westausgang;
-    private Raum treppeNachOben;
-    private Raum treppeNachUnten;
+    private HashMap<String, Raum> ausgaenge;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -30,83 +27,23 @@ public class Raum {
      */
     public Raum(String beschreibung) {
         this.beschreibung = beschreibung;
+        this.ausgaenge=new HashMap<>();
     }
 
     public Raum getAusgang(String richtung) {
-        if (richtung.equals("up")) {
-            return this.treppeNachOben;
-        }
-        if (richtung.equals("down")) {
-            return this.treppeNachUnten;
-        }
-        if (richtung.equals("north")) {
-            return this.nordausgang;
-        }
-        if (richtung.equals("south")) {
-            return this.suedausgang;
-        }
-        if (richtung.equals("east")) {
-            return this.ostausgang;
-        }
-        if (richtung.equals("west")) {
-            return this.westausgang;
-        }
-        return null;
+        return this.ausgaenge.get(richtung);
     }
 
     public String ausgaengeToString() {
-        String ausgaenge = "";
-        if (this.nordausgang != null) {
-            ausgaenge += "north ";
+        String erg = "";
+        for(String richtung:ausgaenge.keySet()){
+            erg+=richtung + " ";
         }
-        if (this.suedausgang != null) {
-            ausgaenge += "south ";
-        }
-        if (this.ostausgang != null) {
-            ausgaenge += "east ";
-        }
-        if (this.westausgang != null) {
-            ausgaenge += "west ";
-        }
-        if (this.treppeNachUnten != null) {
-            ausgaenge += "down ";
-        }
-        if (this.treppeNachOben != null) {
-            ausgaenge += "up ";
-        }
-        return ausgaenge;
+        return erg;
     }
 
-    /**
-     * Definiere die Ausgänge dieses Raums. Jede Richtung
-     * führt entweder in einen anderen Raum oder ist 'null'
-     * (kein Ausgang).
-     *
-     * @param norden Der Nordeingang.
-     * @param osten  Der Osteingang.
-     * @param sueden Der Südeingang.
-     * @param westen Der Westeingang.
-     */
-    public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen, Raum oben, Raum unten) {
-        if (norden != null) {
-            nordausgang = norden;
-        }
-        if (osten != null) {
-            ostausgang = osten;
-        }
-        if (sueden != null) {
-            suedausgang = sueden;
-        }
-        if (westen != null) {
-            westausgang = westen;
-        }
-        if (oben != null) {
-            treppeNachOben = oben;
-        }
-        if (unten != null) {
-            treppeNachUnten = unten;
-        }
+    public void setAusgang(String richtung, Raum nachbar) {
+        this.ausgaenge.put(richtung, nachbar);
     }
 
     /**

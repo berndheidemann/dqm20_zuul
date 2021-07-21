@@ -49,15 +49,26 @@ public class Spiel {
 
 
         // die Ausgänge initialisieren
-        lichtung.setzeAusgaenge(null, null, null, waldstueck, null, piratenhoehle);
-        waldstueck.setzeAusgaenge(null, lichtung, dorfplatz, null, null, null);
-        taverne.setzeAusgaenge(dorfplatz, null, null, null, gaestezimmer, keller);
-        hexenhaus.setzeAusgaenge(null, dorfplatz, null, null, null, null);
-        dorfplatz.setzeAusgaenge(waldstueck, null, taverne, hexenhaus, null, null);
-        piratenhoehle.setzeAusgaenge(null, null, null, geheimgang, lichtung, null);
-        geheimgang.setzeAusgaenge(null, piratenhoehle, keller, null, null, null);
-        keller.setzeAusgaenge(geheimgang, null, null, null, taverne, null);
-        gaestezimmer.setzeAusgaenge(null, null, null, null, null, taverne);
+        lichtung.setAusgang("down", piratenhoehle);
+        lichtung.setAusgang("west" ,waldstueck);
+        waldstueck.setAusgang("east" , lichtung);
+        waldstueck.setAusgang("south" , dorfplatz);
+        dorfplatz.setAusgang("south" ,taverne);
+        dorfplatz.setAusgang("west" ,hexenhaus);
+        dorfplatz.setAusgang("north",waldstueck);
+        taverne.setAusgang("up" , gaestezimmer);
+        taverne.setAusgang("down" , keller);
+        gaestezimmer.setAusgang("down" , taverne);
+        keller.setAusgang("up" , taverne);
+        keller.setAusgang("north" , geheimgang);
+        geheimgang.setAusgang("south" , keller);
+        geheimgang.setAusgang("east" , piratenhoehle);
+        piratenhoehle.setAusgang("up" , lichtung);
+        piratenhoehle.setAusgang("west" , geheimgang);
+        gaestezimmer.setAusgang("window", dorfplatz);
+        lichtung.setAusgang("portal", gaestezimmer);
+
+
         aktuellerRaum = lichtung;  // das Spiel startet auf der Lichtung
     }
 
